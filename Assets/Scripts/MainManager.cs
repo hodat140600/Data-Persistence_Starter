@@ -57,6 +57,13 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (m_Points > MenuManager.Instance.user.userScore)
+                {
+                    MenuManager.Instance.user.userScore = m_Points;
+                    MenuManager.Instance.user.userName = MenuUIHandler.Instance.currentUser;
+
+                    MenuManager.Instance.SaveUserInfo();
+                }
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
